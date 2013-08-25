@@ -123,6 +123,7 @@ nav.column .recent-articles ul {
 li.recent-articles li {
     list-style-type: none;
     font-size: 0.6em;
+    margin-bottom: 0.5em;
 }
 
 section.main {
