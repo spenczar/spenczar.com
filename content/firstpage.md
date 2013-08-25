@@ -1,6 +1,6 @@
 Title: My super title
 Date: 2013-08-22 10:20
-Category: Python
+Category: Blog
 Tags: pelican, publishing
 Slug: my-super-post
 Author: Spencer Nelson
