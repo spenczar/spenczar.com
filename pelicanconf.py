@@ -8,6 +8,8 @@ SITEURL = 'http://spenczar.com'
 
 TIMEZONE = 'America/Los_Angeles'
 
+THEME = 'theme'
+
 DEFAULT_LANG = u'en'
 
 # Categories
@@ -29,13 +31,14 @@ DISPLAY_CATEGORIES_ON_MENU = False
 ARTICLE_URL = 'posts/{date:%Y}/{date:%b}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/{date:%d}/{slug}/index.html'
 
+ARCHIVE_SAVE_AS = 'posts/index.html'
 YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
 MONTH_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/index.html'
 
 
 # Dates
 DATE_FORMATS = {
-    'verbose': '%a, %d %b %Y',
+    'verbose': '%a, %b %d %Y',
     'terse': '%Y-%m-%d',
 }
 
@@ -51,3 +54,22 @@ DEFAULT_PAGINATION = 10
 FILES_TO_COPY = (
     ('extra/CNAME', 'CNAME'),
 )
+
+
+STATIC_PATHS = ['css']
+
+TEMPLATE_PAGES = {
+    'archives.html': 'posts/index.html'
+}
+def a(x, y):
+    """ comment """
+    return x + y * y
+
+class HelloWorld():
+    f = a
+    hash(f)
+    # little comment
+    def __init__(self):
+        print True
+
+

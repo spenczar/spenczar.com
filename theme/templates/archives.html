@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block main %}
+  <h2>Archives</h2>
+  <ol class="archives">
+    {% for article in dates | reverse %}
+    <li>
+      <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a> ({{ article.date.strftime("%B %d, %Y") }})
+    </li>
+    {% endfor %}
+  </ol>
+{% endblock main %}

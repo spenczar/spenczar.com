@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block main %}
+  {% for article in articles_page.object_list %}
+    <article>
+      <header>
+        <h1 class="article-title">
+          <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+        </h1>
+        <time pubdate datetime="{{ article.date.isoformat() }}">{{ article.date|strftime('%b. %d, %Y') }}</time>
+      </header>
+        {{ article.content }}
+    </article>
+  {% endfor %}
+{% endblock main %}
