@@ -59,7 +59,8 @@ FILES_TO_COPY = (
 STATIC_PATHS = ['css']
 
 TEMPLATE_PAGES = {
-    'archives.html': 'posts/index.html'
+    'archives.html': 'posts/index.html',
+    'error.html': 'error.html',
 }
 def a(x, y):
     """ comment """
