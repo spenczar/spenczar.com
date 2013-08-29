@@ -1,0 +1,105 @@
+Title: Data science is about company culture
+Author: Spencer Nelson
+Date: 2013-08-28 18:21:04
+Slug: data-science-is-about-company-culture
+Tags: data-science, data, data-driven, startups
+Summary: Good data science is about transforming a company's culture more than it is about statistics, machine learning, or visualization.
+
+
+You can find gobs of chatter out there about what makes a good data
+scientist. Most focus on technical aspects: know statistics, write
+scripts, build machine-learning tools. Sure, these are all important,
+but the most valuable skill is missing. The most *valuable* skill
+for a data scientist is the ability to shape the culture around
+them, to convince others to use data to inform their decisions.
+
+The best data scientists are the ones who transform their company they
+come to. They motivate an entire organization to make decisions by
+measurement and numbers. They do not do all analysis themselves - they
+turn those around them into analysts.
+
+People who have machine learning skills, know statistics, and can
+write code are terrific, yes. But those alone are not *transformative*.
+
+### why do companies want data scientists? ###
+
+When companies hire data scientists, they rarely want a wizard who can
+dazzle with highly technical presentations but who works
+alone. Impressive algorithms and statistical depth are not the
+mission. The *real* goal is just to make better-informed
+decisions. The best way to do that is to make data-informed decisions
+routine to the organization.
+
+### how does this happen? ###
+
+There are two components in transforming a culture. You have to
+convince people that they should want to work differently, and then
+you have to provide the tools to make that possible.
+
+These aren't really sequential steps - they're tied tightly together
+and happen at the same time.
+
+#### convincing people ####
+
+How do you convince people to work differently? To some extent, this
+can be done with dazzle: impressively prescient predictions can
+convince most people. But the risk is that people think data science
+is a technical task which they can't accomplish, which is really the
+*worst* possible outcome. I think that the right answer is to always
+jump into decision-making discussions and constantly push for metrics
+to back up claims. Good data science requires constant engagement with
+people making decisions, making a quantitative perspective a natural
+part of the whole process.
+
+
+#### giving them tools ####
+
+How do you provide tools to get people to use data? The buzzword here
+is 'data democratization'. Dashboards and non-technical displays are
+really core to a data scientist's skillset. I don't mean
+infographics - I actually mean the opposite. No-nonsense,
+straightforward tables that provide access to clean data for anyone in
+the company can be the **single most valuable internal tool you will
+ever have**.
+
+I am not exaggerating. This is deceptively hard - clean data can be
+hard to come by, and presenting data in a straightforward way - while
+capturing the nuances and quirks which are inevitable in the real
+world - is very difficult. But the reward can be a culture in which
+'checking the numbers' is a routine part of any workflow, from
+customer service to devops to finance.
+
+
+### how to do this ###
+
+If you're a data scientist, here's my advice:
+
+ 1. Make yourself incredibly accessible. Offer to help people get data
+    whenever they need it, and make it a priorite to get it to them
+    fast. The speed is key - it will help make the data process
+    seamless, which will make it easier to convert it into a habit.
+ 2. Make dashboards and web interfaces to your scripts like crazy. I
+    use [Flask](http://flask.pocoo.org/) for this purpose, wrapping
+    tasks up into small applications. Build them aggressively - any
+    time you're running a script twice in a row is a sign that this
+    should have its own web-based control system to open it up.
+ 3. Try to be a part of all planning meetings you can manage. This
+    will be a little painful, but it's important: you want to be there
+    when people make decisions to immediately prod them on whether
+    they have thought about data. You don't need to talk much in these
+    meetings - you might offer to just take notes. As a bonus, you'll
+    gain a *lot* of the contextual knowledge which is so crucial for
+    modeling.
+
+If you're an organization with a data scientist, encourage them to do
+this stuff. The important thing is to make sure that data becomes a
+culture, and that data science is not a silo within the company doing
+abstruse analysis, far from other people. You want data to be
+integrated at every level.
+
+It's not as sexy as visualization, and it's not as intellectually
+intimidating as machine learning, but it ends up being worth a *lot*
+more.
+
+
+Discussion at Hacker News: [link](https://news.ycombinator.com/item?id=6293716 ) 
