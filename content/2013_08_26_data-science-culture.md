@@ -13,8 +13,7 @@ but the list is incomplete. The most *valuable* skill for a data
 scientist is the ability to shape the culture around them, to convince
 others to use data to inform their decisions.
 
-The best data scientists are the ones who transform their company they
-come to. They motivate an entire organization to make decisions by
+The best data scientists are the ones who transform their company. They motivate an entire organization to make decisions by
 measurement and numbers. They do not do all analysis themselves - they
 turn those around them into analysts.
 
