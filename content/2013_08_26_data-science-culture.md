@@ -9,9 +9,9 @@ Summary: Good data science is about transforming a company's culture more than i
 You can find gobs of chatter out there about what makes a good data
 scientist. Most focus on technical aspects: know statistics, write
 scripts, build machine-learning tools. Sure, these are all important,
-but the most valuable skill is missing. The most *valuable* skill
-for a data scientist is the ability to shape the culture around
-them, to convince others to use data to inform their decisions.
+but the list is incomplete. The most *valuable* skill for a data
+scientist is the ability to shape the culture around them, to convince
+others to use data to inform their decisions.
 
 The best data scientists are the ones who transform their company they
 come to. They motivate an entire organization to make decisions by
@@ -26,7 +26,7 @@ write code are terrific, yes. But those alone are not *transformative*.
 When companies hire data scientists, they rarely want a wizard who can
 dazzle with highly technical presentations but who works
 alone. Impressive algorithms and statistical depth are not the
-mission. The *real* goal is just to make better-informed
+mission. The true goal is just to make better-informed
 decisions. The best way to do that is to make data-informed decisions
 routine to the organization.
 
