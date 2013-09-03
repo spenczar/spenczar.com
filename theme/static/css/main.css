@@ -185,3 +185,28 @@ section.content article ul li {
 section.content ol.archives {
     font-size: 1.2em;
 }
+
+article hr {
+    padding: 0;
+    margin: 1em;
+    border: none;
+    color: #333;
+    text-align: center;
+}
+article hr:after {
+    content: "*  *  *";
+    display: inline-block;
+    position: relative; 
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
+    letter-spacing: 1em;
+}
+
+hr.article-divider {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 4em 0em;
+}

@@ -18,13 +18,7 @@ help:
 	@echo '   make publish                     generate using production settings '
 	@echo '   make serve                       serve site at http://localhost:8000'
 	@echo '   make devserver                   start/restart develop_server.sh    '
-	@echo '   make stopserver                  stop local server                  '
-	@echo '   ssh_upload                       upload the web site via SSH        '
-	@echo '   rsync_upload                     upload the web site via rsync+ssh  '
-	@echo '   dropbox_upload                   upload the web site via Dropbox    '
-	@echo '   ftp_upload                       upload the web site via FTP        '
 	@echo '   s3_upload                        upload the web site via S3         '
-	@echo '   github                           upload the web site via gh-pages   '
 	@echo '                                                                       '
 
 
@@ -36,19 +30,12 @@ $(OUTPUTDIR)/%.html:
 clean:
 	[ ! -d $(OUTPUTDIR) ] || find $(OUTPUTDIR) -mindepth 1 -delete
 
-regenerate: clean
-	pelican -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
-
 serve:
 	cd $(OUTPUTDIR) && python -m pelican.server
 
-devserver:
-	$(BASEDIR)/develop_server.sh restart
-
-stopserver:
-	kill -9 `cat pelican.pid`
-	kill -9 `cat srv.pid`
-	@echo 'Stopped Pelican and SimpleHTTPServer processes running in background.'
+devserver: clean $(OUTPUTDIR)
+	publish
+	serve
 
 publish:
 	pelican $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
