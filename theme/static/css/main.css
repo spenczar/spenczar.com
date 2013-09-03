@@ -203,6 +203,10 @@ article hr:after {
     letter-spacing: 1em;
 }
 
+article p {
+    line-height: 1.3em;
+}
+
 hr.article-divider {
     border: 0;
     height: 0;
@@ -210,3 +214,4 @@ hr.article-divider {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     margin: 4em 0em;
 }
+
