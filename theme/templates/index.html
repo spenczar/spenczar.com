@@ -3,7 +3,7 @@
 {% block title %} home {% endblock title %}
 
 {% block main %}
-  {% for article in articles_page.object_list %}
+  {% for article in articles_page.object_list[:1] %}
     <article>
       <header>
         <h1 class="article-title">

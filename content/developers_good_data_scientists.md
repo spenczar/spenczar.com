@@ -36,3 +36,5 @@ If the data nerd wasn't previously a developer, then this is probably way over h
 I'm not sure that there's a word for exactly this person. It's possible that this goes beyond what the LinkedIn crew were describing when they [popularized 'data science'](http://radar.oreilly.com/2011/09/building-data-science-teams.html) as a term. 
 
 But it doesn't really matter - whatever this is, this fusion of developer and data scientist, it's really *really* valuable. Much more valuable, I'd say, than a quant or a stats wonk, at least for most of the startups out there. Keeping scripts high quality, keeping data sources clean, and keeping dashboards fresh should all be high-priority concerns in this data, and those are the sorts of tasks that require dedication and attention, not occasional riffs from engineers.
+
+Discuss at Hacker News: [link](https://news.ycombinator.com/item?id=6328675)
