@@ -12,3 +12,9 @@ I spend most of my time in Python (more specifically, [IPython](http://ipython.o
 # contact
 
 You get in touch with me by email: <s@spenczar.com>
+
+
+
+# this blog
+
+This blog is made with [Pelican](http://docs.getpelican.com/en/3.2/), which I highly recommend. My blog itself is [available on GitHub](https://github.com/spenczar/spenczar.com); feel free to use the theme in any way you like, but be forewarned that I have done stuff with no concern for some Pelican features like multiple authors or categories.

@@ -4,7 +4,7 @@ Date: 2013-09-07 20:00:00
 Slug: seven-stages-analytics-grief
 Summary: Web apps seem to graduate through a series of stages with regards to analytics. 
 Status: draft
-sy
+
 Web apps seem to graduate through a series of stages with regards to analytics. 
 
 ### Stage 1: We should probably keep track of page views, you guys
