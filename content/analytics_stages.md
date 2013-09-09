@@ -55,6 +55,8 @@ Once you've got a data team, complete with engineers and infrastructure for mini
 
 This is a very large project, since real-time data is quite different from the static analysis you've been doing with very different engineering challenges, and the data team might even split into two sub teams here. With a little luck, though, the data systems become a feature - and a powerful competitive advantage. Your data systems will be hard for any startup competitor to duplicate since they won't have the accumulated data points to make good decisions.
 
+* * *
+
 ### Moral of the story: It's hard to manage data quality
 There's one big theme to this I want to get at: it's tough to maintain a high-quality data system.
 
@@ -64,6 +66,6 @@ It's not a coincidence that this mirrors the pattern of most startups' codebases
 
 The difference is that your codebase has a CTO. It has an owner. That owner is responsible for its quality, which helps hold things together (optimistically!). Few teams start with a Chief Data Officer, though. Usually, analytics is a side-concern, a means to an end, and it is nobody's top concern, which is all completely justified but which results in a bit of chaos.
 
-* * *
+Again, to be clear, I think that's fine, it's just something to watch out for. I think as data becomes a more core component of businesses, we'll see an evolution of data management best practices, something like the evolution of best practices in web development over the past 20 years.
 
-Discuss on Hacker News: [link](http://spenczar.com/posts/2013/Sep/07/seven-stages-analytics-grief/)
+[Discuss this on Hacker News](http://spenczar.com/posts/2013/Sep/07/seven-stages-analytics-grief/). Or, email: <s@spenczar.com>
