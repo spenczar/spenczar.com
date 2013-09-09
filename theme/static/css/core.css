@@ -1,5 +1,8 @@
+@import url("desktop.css"); 
+@import url("mobile.css") handheld; 
+@import url("mobile.css") only screen and (max-device-width:480px);
+
 body {
-    font-family: "Garamond", "Georgia", "Droid Serif", serif;
     color: #222;
 
 }
@@ -108,8 +111,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 nav.column {
-    width: 200px;
-    float: right;
     margin-left: 1em;
     margin-top: 2.5em;
     padding: 3em 0em 3em 1em;
@@ -143,7 +144,6 @@ li.recent-articles li {
 }
 
 section.main {
-    float: none;
     width: auto;
     overflow: hidden;
     margin-top: 2em;
@@ -201,10 +201,6 @@ article hr:after {
     padding: 0 0.25em;
     background: white;
     letter-spacing: 1em;
-}
-
-article p {
-    line-height: 1.3em;
 }
 
 hr.article-divider {

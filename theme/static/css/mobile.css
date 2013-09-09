@@ -1,0 +1,23 @@
+body {
+    font-family: Georgia, serif;
+}
+
+article p {
+    line-height: 1.9em;
+}
+nav.column {
+    float: none;
+    width: 100%;
+}
+
+nav.column li.nav-item {
+    display: inline;
+}
+
+nav.column li.nav-item:after { 
+    content: " | "; 
+}
+
+nav.column li.nav-item.recent-articles {
+    display: none;
+}

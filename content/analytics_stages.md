@@ -30,7 +30,7 @@ The A/B tests are probably helpful, but not earth-shattering. Quietly, there's a
 ### Stage 4: We need to know a lot more about how people use our products
 The "hmmm maybe we should go back to working on product and not the signup page" phase. 
 
-You've now got a large enough base of users that it's not feasible to stay in close contact with everybody, and you're surprised by occasional negative comments on Hacker News. "Why didn't they just email me first?", you whinge. "We should add instrumentation all over our app, so we know how people actually use it and see what the problems are!"
+You've now got enough users that it's not feasible to stay in close contact with everybody, and you're surprised by occasional negative comments on Hacker News. "Why didn't they just email me first?", you whinge. "We should add instrumentation all over our app, so we know how people actually use it and see what the problems are!"
 
 Most of the instrumentation is done in Mixpanel, but page views are still in GA. Things are getting sufficiently complex that there's one engineer who is just known as "the analytics guy" and who has become the local expert on the quirks and warts through pure accident.
 
@@ -64,7 +64,7 @@ For a while in the beginning, it feels easy - you only have a few people in the 
 
 It's not a coincidence that this mirrors the pattern of most startups' codebases, which go from simple to harebrained as the product evolves, and two years later people grumble that maybe we should just rewrite this whole thing.
 
-The difference is that your codebase has a CTO. It has an owner. That owner is responsible for its quality, which helps hold things together (optimistically!). Few teams start with a Chief Data Officer, though. Usually, analytics is a side-concern, a means to an end, and it is nobody's top concern, which is all completely justified but which results in a bit of chaos.
+The difference is that your codebase has a CTO. It has an owner. That owner is responsible for its quality, which helps hold things together (optimistically!). Few teams start with a Chief Data Officer, though. Usually, analytics is a side-concern, a means to an end, and it is nobody's top priority, which is all completely justified but which results in a bit of chaos.
 
 Again, to be clear, I think that's fine, it's just something to watch out for. I think as data becomes a more core component of businesses, we'll see an evolution of data management best practices, something like the evolution of best practices in web development over the past 20 years.
 
