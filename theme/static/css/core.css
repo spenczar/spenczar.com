@@ -224,3 +224,7 @@ td.alpha, th.alpha {
 td.numeric, th.numeric {
     text-align: right;
 }
+
+.twitter {
+    font-size: 0.8em;
+}

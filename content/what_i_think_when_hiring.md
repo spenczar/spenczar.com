@@ -82,7 +82,7 @@ time identifying bugs or bad data.
 For this I usually just ask them to talk a little about what they'd be
 interested in researching in their first few months at twitch. Bad
 answer: "I want to use ensemble methods incorporating deep learning to
-make recommendations!" Good answer: "I want to figure out
+make recommendations!" Good answer: "I want to figure out what
 differentiates successful League of Legends broadcasters from
 unsuccessful ones!"
 
