@@ -211,3 +211,16 @@ hr.article-divider {
     margin: 4em 0em;
 }
 
+table {
+    table-layout: fixed;
+    width: 80%;
+    margin-left: 10%;
+}
+
+td.alpha, th.alpha {
+    text-align: left;
+}
+
+td.numeric, th.numeric {
+    text-align: right;
+}
