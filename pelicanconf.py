@@ -65,15 +65,3 @@ TEMPLATE_PAGES = {
     'archives.html': 'posts/index.html',
     'error.html': 'error.html',
 }
-def a(x, y):
-    """ comment """
-    return x + y * y
-
-class HelloWorld():
-    f = a
-    hash(f)
-    # little comment
-    def __init__(self):
-        print True
-
-
