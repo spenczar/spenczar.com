@@ -1,5 +1,5 @@
 name: tdigest
 ---
-summary: Fast approximate histograms in Go using the t-digest algorithm
+summary: A Go implementation of the t-digest algorithm, used for fast and memory-efficient quantile estimation.
 ---
 url: https://github.com/spenczar/tdigest
