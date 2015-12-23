@@ -116,7 +116,11 @@ section.posts ul {
     width: 75%;
 }
 
-section.posts li {
+section.projects ul {
+    list-style: none;
+}
+
+section.posts li, section.projects li {
     margin-bottom: 1.3em;
 }
 
@@ -126,7 +130,7 @@ section.posts li span {
     padding-right: 1em;
 }
 
-section.posts li p {
+section.posts li p, section.projects li {
     margin-top: 0.5em;
     margin-left: 7em;
 }

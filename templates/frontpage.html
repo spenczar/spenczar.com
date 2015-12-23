@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% from "macros.html" import render_project_list %}
+{% from "macros.html" import render_post_list %}
+{% block title %}{{ "spenczar.com" }}{% endblock %}
+{% block body %}
+<section class="about">
+  <h3>About</h3>
+  <p>
+    I'm Spencer, and I'm currently a software engineer at
+    [Twitch](http://www.twitch.tv). I started my time there building a
+    data science team. Now, my focus is on building tools to help
+    stability and reliability at Twitch.
+  </p>
+  <p>
+    I write a lot of [Go](http://golang.org) these days, but my first
+    love was Python, and I still occasionally dip back into that
+    world.
+  </p>
+</section>
+<section class="posts">
+  <h3>Writings</h3>
+  {{ render_post_list(site.get('/posts')) }}
+</section>
+<section class="projects">
+  <h3>Projects</h3>
+  {{ render_project_list(site.get('/projects')) }}
+</section>
+{% endblock %}

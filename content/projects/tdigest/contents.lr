@@ -1,0 +1,5 @@
+name: tdigest
+---
+summary: Fast approximate histograms in Go using the t-digest algorithm
+---
+url: https://github.com/spenczar/tdigest

@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% from "macros.html" import render_project_list %}
+{% block title %}Projects{% endblock %}
+{% block body %}
+<section class="projects">
+  <h3>Projects</h3> 
+  {{ render_project_list(this) }}
+  </h3>
+</section>
+{% endblock %}
