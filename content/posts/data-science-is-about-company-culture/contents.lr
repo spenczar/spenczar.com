@@ -1,10 +1,14 @@
-Title: Data science is about company culture
-Author: Spencer Nelson
-Date: 2013-08-28 18:21:04
-Slug: data-science-is-about-company-culture
-Tags: data-science, data, data-driven, startups
-Summary: Good data science is about transforming a company's culture more than it is about statistics, machine learning, or visualization.
-
+title: Data science is about company culture
+---
+author: Spencer Nelson
+---
+pub_date: 2013-08-28
+---
+tags: data-science, data, data-driven, startups
+---
+summary: Good data science is about transforming a company's culture more than it is about statistics, machine learning, or visualization.
+---
+body:
 
 You can find gobs of chatter out there about what makes a good data scientist. Most focus on technical aspects: know statistics, write scripts, build machine-learning tools. Sure, these are all important, but the list is incomplete. The most *valuable* skill for a data scientist is the ability to shape the culture around them, to convince others to use data to inform their decisions.
 

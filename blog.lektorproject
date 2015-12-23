@@ -1,0 +1,12 @@
+[project]
+name = blog
+locale = en_US
+
+[servers.production]
+name = production
+enabled = yes
+default = yes
+target = s3://spenczar.com
+
+[packages]
+lektor-s3 = 0.2.1

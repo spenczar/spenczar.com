@@ -1,10 +1,11 @@
-@import url("desktop.css"); 
-@import url("mobile.css") handheld; 
-@import url("mobile.css") only screen and (max-device-width:480px);
-
+/* Typography */
 body {
+    font-family: "Garamond", "Georgia", serif;
+    font-size: 1em;
+    line-height: 1.25em;
     color: #222;
-
+    margin: auto;
+    width: 960px;
 }
 
 a {
@@ -22,8 +23,14 @@ a:hover, a:active {
 
 }
 
+header h1 a {
+    color: #222;
+}
+
 h1 {
     font-size: 2em;
+    margin: auto;
+    line-height: 1.2em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -103,87 +110,52 @@ h1, h2, h3, h4, h5, h6 {
 .highlight pre  .vi { color: #bb60d5 } /* Name.Variable.Instance */
 .highlight pre  .il { color: #40a070 } /* Literal.Number.Integer.Long */
 
-.container {
-    height: auto;
-    overflow: hidden;
-    width: 960px;
+/* Frontpage */
+section.posts ul {
+    list-style: none;
+    width: 75%;
+}
+
+section.posts li {
+    margin-bottom: 1.3em;
+}
+
+section.posts li span {
+    display: inline-block;
+    min-width: 6em;
+    padding-right: 1em;
+}
+
+section.posts li p {
+    margin-top: 0.5em;
+    margin-left: 7em;
+}
+
+/* Blog post contents */
+article {
+    width: 35em;
     margin: auto;
+    padding-top: 1.5em;
+    padding-bottom: 3em;
+
+    hyphens: auto;
 }
 
-nav.column {
-    margin-left: 1em;
-    margin-top: 2.5em;
-    padding: 3em 0em 3em 1em;
-    border-left: 1px solid #ddd;
-}
-
-nav.column ul {
-    margin: 0px;
-    padding: 0px;
-}
-
-nav.column li.nav-item {
-    list-style-type: none;
-    font-size: 1.5em;
-    padding-bottom: 0.5em;
-}
-
-nav.column .recent-articles p {
-    padding-bottom: 0.2em;
-    margin: 0;
-}
-
-nav.column .recent-articles ul {
-    padding-left: 0.5em;
-}
-
-li.recent-articles li {
-    list-style-type: none;
-    font-size: 0.6em;
-    margin-bottom: 0.5em;
-}
-
-section.main {
-    width: auto;
-    overflow: hidden;
-    margin-top: 2em;
-}
-
-section.main header.blog-title {
-    font-size: 4em;
-}
-
-section.main section.content {
-    padding: 3em;
-}
-
-section.content article {
-    margin-bottom: 4em;
-}
-
-section.content article header {
+article header {
     margin-bottom: 0.3em;
 }
 
-section.content article header h1 {
+article header h1 {
     margin: 0em;
     padding: 0em;
 }
 
-section.content article header time {
+article header time {
     font-size: 0.9em;
 }
 
-section.content article {
-    font-size: 1.2em;
-}
-
-section.content article ul li {
+article ul li {
     list-style-type: square;
-}
-
-section.content ol.archives {
-    font-size: 1.2em;
 }
 
 article hr {
@@ -193,6 +165,7 @@ article hr {
     color: #333;
     text-align: center;
 }
+
 article hr:after {
     content: "*  *  *";
     display: inline-block;
@@ -211,6 +184,7 @@ hr.article-divider {
     margin: 4em 0em;
 }
 
+/* Tables and other miscellany */
 table {
     table-layout: fixed;
     width: 80%;
@@ -223,8 +197,4 @@ td.alpha, th.alpha {
 
 td.numeric, th.numeric {
     text-align: right;
-}
-
-.twitter {
-    font-size: 0.8em;
 }

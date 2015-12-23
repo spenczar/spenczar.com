@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block title %}{{ this.title }}{% endblock %}
+{% block body %}
+<article>
+  <header>
+    <h1 class="article-title">{{ this.title }}</h1>
+    <time pubdate datetime="{{ this.pub_date }}">{{ this.pub_date }}</time>
+  </header>
+  {{ this.body }}
+</article>
+{% endblock %}
