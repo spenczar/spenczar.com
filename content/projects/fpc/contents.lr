@@ -1,5 +1,5 @@
 name: fpc
 ---
-summary: A Go implementation of FPC, which is a very fast lossless compression algorithm for floating point data.
+summary: A Go implementation of [FPC](http://cs.txstate.edu/~burtscher/research/FPC/), which is a very fast lossless compression algorithm for floating point data.
 ---
 url: https://github.com/spenczar/fpc
