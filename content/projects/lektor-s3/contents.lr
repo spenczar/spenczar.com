@@ -1,0 +1,5 @@
+name: lektor-s3
+---
+summary: A plugin for [Lektor](https://github.com/lektor/lektor), the static site generator, to allow uploading to S3.
+---
+url: https://github.com/lektor/lektor
