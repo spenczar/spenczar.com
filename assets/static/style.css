@@ -144,6 +144,14 @@ section.projects dd p {
     padding-top: 0;
 }
 
+section.projects dl dt {
+    margin-left: 40px;
+}
+
+section.projects dl dd {
+    margin-left: 60px;
+}
+
 /* Blog post contents */
 article {
     width: 35em;
