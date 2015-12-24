@@ -3,18 +3,20 @@
   {% for post in blog.children %}
   <li>
     <span>{{ post.pub_date }}</span><a href="{{ post|url }}">{{ post.title }}</a>
-    <p>{{ post.summary }} </p>
+    {{ post.summary }}
   </li>
   {% endfor %}
   </ul>
 {% endmacro %}
 
 {% macro render_project_list(projects) %}
-  <ul>
+  <dl>
   {% for project in projects.children %}
-  <li>
-    <a href="{{ project.url }}">{{ project.name }}</a> {{ project.summary }}
-  </li>
+      <dt><a href="{{ project.url }}">{{ project.name }}</a></dt>
+      <dd class="summary">
+          {{ project.summary }}
+      </dd>
+  </dl>
   {% endfor %}
   </ul>
 {% endmacro %}

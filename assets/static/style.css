@@ -40,6 +40,10 @@ h1, h2, h3, h4, h5, h6 {
     color: #A06A4D;
 }
 
+dt {
+    font-weight: bold;
+}
+
 .highlight pre   { 
     background: #f0f0f0; 
     margin: 1em;
@@ -133,6 +137,11 @@ section.posts li span {
 section.posts li p, section.projects li {
     margin-top: 0.5em;
     margin-left: 7em;
+}
+
+section.projects dd p {
+    margin-top: 0;
+    padding-top: 0;
 }
 
 /* Blog post contents */
