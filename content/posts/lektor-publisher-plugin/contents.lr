@@ -24,7 +24,7 @@ eye for API design and the excellent quality of his code, so when he released
 Lektor a few days ago, I was really interested.
 
 I wanted to use Lektor for the website you're reading right now, but I host it
-on S3, which isn't natively supported by Laktor as a deployment target.
+on S3, which isn't natively supported by Lektor as a deployment target.
 
 Fortunately, there was a clear way forward: Lektor comes with a plugin system
 which is intended to help developers add functionality to Lektor without
