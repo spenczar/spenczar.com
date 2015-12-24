@@ -1,0 +1,298 @@
+title: Writing a Lektor publisher plugin
+
+---
+
+author: Spencer Nelson
+
+---
+
+pub_date: 2015-12-24
+
+---
+
+summary: A brief guidie to writing plugins which add publishers to Lektor.
+
+---
+
+body:
+
+[Lektor](https://github.com/lektor/lektor) is a new static site generator which
+was developed by [Armin Ronacher](http://lucumr.pocoo.org/). Armin has written
+a lot of Python software I really love, particularly
+[Flask](http://flask.pocoo.org/). I've always been impressed with his careful
+eye for API design and the excellent quality of his code, so when he released
+Lektor a few days ago, I was really interested.
+
+I wanted to use Lektor for the website you're reading right now, but I host it
+on S3, which isn't natively supported by Laktor as a deployment target.
+
+Fortunately, there was a clear way forward: Lektor comes with a plugin system
+which is intended to help developers add functionality to Lektor without
+requiring the core codebase to sprawl too much. It's a good model and it's
+worked well with Flask; I think it'll serve Lektor quite well too.
+
+I wrote [lektor-s3](https://github.com/spenczar/lektor-s3), which to my
+knowledge is the first published third-party plugin for Lektor. To help others
+do this sort of thing, I've written down a brief guide on how you add a new
+publisher to Lektor.
+
+## How publishers work ##
+
+Publishers are really pretty simple. All you need to do is implement the
+[`lektor.publisher.Publisher` class](https://github.com/lektor/lektor/blob/69b6f9a4bace7f231b616ce9ad50acd3d258b014/lektor/publisher.py#L156-L167):
+
+<div class="highlight"><pre>
+class Publisher(object):
+
+    def __init__(self, env, output_path):
+        self.env = env
+        self.output_path = os.path.abspath(output_path)
+
+    def fail(self, message):
+        raise PublishError(message)
+
+    def publish(self, target_url, credentials=None, **extra):
+        raise NotImplementedError()
+
+</pre></div>
+
+
+When you write a plugin, you write a subclass of `Publisher`. The main thing
+you need to do is write an implementation of the `publish` method, whose most
+important argument is `target_url`. This will be the full URL that the user is
+trying to deploy to, like `"ftp://somehost.com"`. You'll get the URL as a
+[`werkzeug.url.URL`](http://werkzeug.pocoo.org/docs/0.11/urls/#werkzeug.urls.URL),
+so you're able to do fancy stuff like `target_url.host` to extract parts of the
+URL.
+
+In addition, your publisher has access to the
+[environment](https://www.getlektor.com/docs/api/environment/) (which is sort
+of a grab-bag of configuration and facts) through `self.env`, and it has a
+string which is the absolute path to the latest build in `self.output_path`.
+
+So, to write a working Publisher, all you need to do is write a `publish`
+method which will scoop up the build artifact in `self.output_path` and send it
+to the `target_url`.
+
+### An example publisher ###
+
+Let's make an example! We'll write a publisher which does the silliest little
+thing: it will copy the build directory to another local directory. This is
+probably not very useful, but it's very simple, so it'll be easy to demonstrate
+how things work.
+
+To be more explicit, we'll write a publisher which works on targets that look
+like `cp://localhost/path/to/dir`, and copies the build output to
+`/path/to/dir`.
+
+To do this, we'll use the
+[`shutil`](https://docs.python.org/2/library/shutil.html) module from the
+standard library to actually do the copying.
+
+So, here we go - let's make a file called `lektor_copy_publisher.py`:
+
+<div class="highlight">
+<pre>
+import shutil
+from lektor.publisher import Publisher
+
+class CopyPublisher(Publisher):
+
+    def publish(self, target_url, credentials=None, **extra):
+        target_dir = target_url.path
+        yield "copying to local directory %s" % target_dir
+
+        # Clear the target directory if it exists
+        yield "clearing target directory"
+        shutil.rmtree(target_dir, ignore_errors=True)
+
+        # Copy the build output to the target directory
+        yield "copying tree"
+        shutil.copytree(self.output_path, target_dir)
+
+</pre>
+</div>
+
+And that's all it takes! A more useful publisher might have quite a bit more
+logic here; for example, `lektor-s3`
+[computes the difference](https://github.com/spenczar/lektor-s3/blob/c04069c458827a2c4e3aec3f89c037866c42b328/lektor_s3.py#L120-L138)
+between the local and remote state to make sure it doesn't do any wasted
+work.
+
+One unusual bit is the way logging is handled, which is through `yield`. The
+`lektor deploy` command will handle these yields by immediately printing a
+colored, well-indented message.
+
+Now that we've written a publisher, let's write a plugin to hook it into Lektor.
+
+## How plugins work ##
+
+Lektor's plugins are based on a pubsub model. The core library emits events,
+which have string IDs; when an event is emitted that a plugin is subscribed to,
+the plugin will fire it's handler for that method.
+
+For example, when the Environment sets up it's template filters, it
+[emits a `'process-template-context'`](https://github.com/lektor/lektor/blob/69b6f9a4bace7f231b616ce9ad50acd3d258b014/lektor/environment.py#L498-L499)
+event. If your plugin had a method named `on_process_template_context`, then it
+would be invoked when that event is emitted. To hook into that magic, all you
+need to do is write a subclass of
+[`lektor.pluginsystem.Plugin`](https://github.com/lektor/lektor/blob/69b6f9a4bace7f231b616ce9ad50acd3d258b014/lektor/pluginsystem.py#L27).
+
+### Continuing our example with a plugin ###
+
+We're writing a plugin which will configure the environment to accept a new
+publisher class. To do that, we'll want to hook into the
+[`setup-env` event](https://github.com/lektor/lektor/blob/69b6f9a4bace7f231b616ce9ad50acd3d258b014/lektor/pluginsystem.py#L124),
+because we want to adjust the environment right as it gets set up. All we'll do
+is add our publisher to the environment.
+
+So, let's write a `CopyPublisherPlugin` and add it to `lektor_copy_publisher.py`:
+
+<div class="highlight"><pre>
+import shutil
+from lektor.pluginsystem import Plugin
+from lektor.publisher import Publisher
+
+class CopyPublisher(Publisher):
+
+    def publish(self, target_url, credentials=None, **extra):
+        target_dir = target_url.path
+        yield "copying to local directory %s" % target_dir
+
+        # Clear the target directory if it exists
+        yield "clearing target directory"
+        shutil.rmtree(target_dir, ignore_errors=True)
+
+        # Copy the build output to the target directory
+        yield "copying tree"
+        shutil.copytree(self.output_path, target_dir)
+
+
+class CopyPublisherPlugin(Plugin):
+    name = u'copy-publisher'
+    description = u'A demo plugin.'
+
+    def on_setup_env(self, **extra):
+        try:
+            self.env.add_publisher('cp', CopyPublisher)
+        except AttributeError:
+            from lektor.publisher import publishers
+            publishers['cp'] = CopyPublisher
+</pre>
+</div>
+
+This is all our plugin needs to do to add our `CopyPublisher`. The
+`try... except` block is ugly, but it's required for backwards compatibility
+with Lektor v1.0, which didn't provide the clean `add_publisher` interface.
+
+Finally, there's one more thing we need to make our plugin. We should add a
+`setup.py` file, which will let us publish the plugin to PyPi and make it easy
+to install with pip.
+
+`setup.py`'s format is idiosyncratic, but if we focus on a narrow subset, we'll
+do just fine:
+
+<div class="highlight">
+<pre>
+from setuptools import setup
+
+setup(
+    name='lektor-copy-publisher',
+    version='0.1',
+    author=u'Spencer Nelson',
+    author_email='s@spenczar.com',
+    url='https://github.com/spenczar/lektor-copy-publisher',
+    license='MIT',
+    py_modules=['lektor_copy_publisher'],
+    entry_points={
+        'lektor.plugins': [
+            'copy-publisher = lektor_copy_publisher:CopyPublisherPlugin',
+        ]
+    }
+)
+</pre>
+</div>
+
+There are a few things to point out:
+
+ - The name of your package should start with `lektor-` to help it integrate
+   cleanly with Lektor's plugin tooling.
+ - `py_modules` should be a list of the modules in the same directory to bring
+   along. If your plugin spans multiple files - say, `utils.py`,
+   `publisher.py`, and `plugin.py` - then you'd need to name each and every
+   file: `['file', 'publisher', 'plugin']`.
+ - If your plugin has dependencies outside the standard library, you should
+   mark those dependencies by setting the `install_requires` keyword, like
+   `install_requires=['boto3', 'Pygments']`.
+ - The URL field _must_ be set to be able to publish your plugin. You'll want
+   to do this, so it's worthwhile to push your plugin to github (or wherever)
+   so you have a URL to provide early on.
+
+## Installing and using your plugin
+
+Let's see whether our plugin works.
+
+To work on the plugin locally, add a `packages` directory to your Lektor
+project, and put in a symlink to your plugin's directory:
+
+<div class="highlight"><pre>
+$ cd <...some lektor project...>
+$ mkdir packages
+$ ln -s /home/users/spencer/src/github.com/lektor-copy-publisher \
+    ./packages/lektor-copy-publisher
+</pre></div>
+
+To confirm your plugin is installed, run `lektor plugins list`, and you should see your plugin:
+<div class="highlight"><pre>
+lektor plugins list
+copy-publisher (version 0.1)
+</pre></div>
+
+Next, add a server using your new plugin's scheme to your Lektor project file:
+
+<div class="highlight"><pre>
+[servers.copy]
+name = copy
+enabled = yes
+target = cp://localhost/tmp/build
+</pre></div>
+
+And now give it a shot:
+
+<div class="highlight"><pre>
+$ lektor deploy copy
+Deploying to copy
+  Build cache: /Users/spencer/Library/Caches/Lektor/builds/6911a2f21250a1a79a0fd65f930bfd9a
+  Target: cp://localhost/tmp/build
+  copying to local directory /tmp/build
+  clearing target directory
+  copying tree
+Done!
+</pre></div>
+
+You've got a working plugin!
+
+## Publishing your plugin ##
+
+To make your plugin available to other users, you should add it to PyPi. This
+can be a bit of a hassle, but lektor gives a command-line tool that should make
+it pretty painless: Run `lektor dev publish-plugin` and a proper distributable
+version of your package will be built.
+
+You'll get asked to authenticate with PyPI, which means you need to set up an
+account if you don't have one, but it's pretty easy.
+
+## Publicize ##
+
+The final step is to let people know about your plugin! The simplest way to do
+this is to add it to
+[the official list of plugins](https://www.getlektor.com/docs/plugins/list/) on
+the Lektor website. You can do this by making a pull request to the
+[lektor-website](https://github.com/lektor/lektor-website/blob/master/content/docs/plugins/list/contents.lr)
+project - please, share your creation!
+
+I hope this convinced you that writing a Lektor publisher plugin is really
+quite simple. Lektor is cleanly designed and a delight to use, so I think it's
+going to succeed. The more publishers it has available, the quicker and
+stronger it will grow, so don't hesitate to jump in and contribute while the
+project is young and there's plenty of low-hanging fruit. 

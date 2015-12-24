@@ -46,10 +46,11 @@ dt {
 
 .highlight pre   { 
     background: #f0f0f0; 
-    margin: 1em;
+    margin: 1em -3em 1em -3em;
     padding: 1em;
     font-family: "Anonymous Pro", Consolas, "Liberation Mono", Courier, monospace;
     font-size: 0.8em;
+    overflow: hidden;
 }
 
 .highlight pre  .hll { background-color: #ffffcc }
