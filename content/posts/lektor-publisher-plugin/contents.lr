@@ -238,7 +238,7 @@ project, and put in a symlink to your plugin's directory:
 <div class="highlight"><pre>
 $ cd <...some lektor project...>
 $ mkdir packages
-$ ln -s /home/users/spencer/src/github.com/lektor-copy-publisher \
+$ ln -s /home/users/spencer/src/github.com/spenczar/lektor-copy-publisher \
     ./packages/lektor-copy-publisher
 </pre></div>
 
