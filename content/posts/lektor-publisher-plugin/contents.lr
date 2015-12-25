@@ -57,10 +57,10 @@ class Publisher(object):
 </pre></div>
 
 
-When you write a plugin, you write a subclass of `Publisher`. The main thing
-you need to do is write an implementation of the `publish` method, whose most
-important argument is `target_url`. This will be the full URL that the user is
-trying to deploy to, like `"ftp://somehost.com"`. You'll get the URL as a
+To write a plugin, you make a subclass of `Publisher`. The main thing you need
+to do is write an implementation of the `publish` method, whose most important
+argument is `target_url`. This will be the full URL that the user is trying to
+deploy to, like `"ftp://somehost.com"`. You'll get the URL as a
 [`werkzeug.url.URL`](http://werkzeug.pocoo.org/docs/0.11/urls/#werkzeug.urls.URL),
 so you're able to do fancy stuff like `target_url.host` to extract parts of the
 URL.
