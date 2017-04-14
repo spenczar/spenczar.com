@@ -9,4 +9,4 @@ default = yes
 target = s3://spenczar.com
 
 [packages]
-lektor-s3 = 0.2.1
+lektor-s3 = 0.4.0
