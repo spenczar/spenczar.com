@@ -1,0 +1,5 @@
+name: retool
+---
+summary: A tool for vendoring executables when working on Go projects.
+---
+url: https://github.com/twitchtv/retool
